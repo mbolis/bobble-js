@@ -1,0 +1,85 @@
+:root {
+	--full-height: 800px;
+	--full-width: 600px;
+	--half-width: calc(var(--full-width) / 2);
+
+	--bobble-diameter: 60px;
+	--bobble-radius: calc(var(--bobble-diameter) / 2);
+	--bobble-border: 2px;
+	--bobble-inner-diameter: calc(var(--bobble-diameter) - calc(var(--bobble-border) * 2));
+	--bobble-glow-radius: 5px;
+
+	--inner-height: calc(var(--full-height) - var(--bobble-diameter));
+	--inner-width: calc(var(--full-width) - var(--bobble-diameter));
+	--half-inner-width: calc(var(--inner-width) / 2);
+
+	--preview-spacing: calc(var(--half-inner-width) - var(--bobble-inner-diameter));
+}
+
+#app {
+	width: var(--full-width);
+	height: var(--full-height);
+	background-color: black;
+	position: relative;
+	overflow: hidden;
+}
+
+#launcher {
+	position: absolute;
+	bottom: 0;
+	left: var(--half-inner-width);
+	width: var(--bobble-diameter);
+	height: var(--bobble-diameter);
+	z-index: 10;
+}
+#launcher::after {
+	content: "";
+	position: absolute;
+	top: -35px;
+	left: 25px;
+	width: 0;
+	height: 0;
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 30px solid white;
+}
+
+#preview {
+	position: absolute;
+	bottom: calc(var(--bobble-radius) * -1);
+	left: var(--preview-spacing);
+	width: var(--bobble-diameter);
+	height: var(--bobble-diameter);
+	z-index: 10;
+}
+
+.bobble {
+	margin: var(--bobble-border);
+	width: var(--bobble-inner-diameter);
+	height: var(--bobble-inner-diameter);
+	position: absolute;
+	border-radius: 50%;
+}
+.bobble.red {
+	background-color: red;
+	box-shadow: 0 0 var(--bobble-glow-radius) 0 lightcoral;
+}
+.bobble.gold {
+	background-color: gold;
+	box-shadow: 0 0 var(--bobble-glow-radius) 0 yellow;
+}
+.bobble.green {
+	background-color: green;
+	box-shadow: 0 0 var(--bobble-glow-radius) 0 limegreen;
+}
+.bobble.blue {
+	background-color: blue;
+	box-shadow: 0 0 var(--bobble-glow-radius) 0 royalblue;
+}
+.bobble.purple {
+	background-color: purple;
+	box-shadow: 0 0 var(--bobble-glow-radius) 0 mediumorchid;
+}
+.bobble.pop {
+	z-index: 100;
+}
